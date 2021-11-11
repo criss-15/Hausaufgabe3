@@ -19,19 +19,19 @@ public class RegistrationSystem {
     public boolean register(Student student, Course curs){
         if(curs.getStudentsEnrolled().size() == curs.getMaxEnrollment())
         {
-            System.out.println("Die Platze sind voll.Wahlen sie bitte ein anderes Kurs!");
+            System.out.println("The seats are full, please choose another course!");
             return false;
         }
         else
             if(curs.getStudentsEnrolled().contains(student))
             {
-                System.out.println("Der Student besucht diesen Kurs!");
+                System.out.println("The student is attending this course!");
                 return false;
             }
         else
             if(student.totalCreditsOfaStudent() == 30 || student.totalCreditsOfaStudent() > 30)
             {
-                System.out.println("Sie konnen sich beim Kurs nicht anmelden! Anzahl der Kredite ist schon 30.");
+                System.out.println("You can't register for the course! Number of credits is already 30.");
                 return false;
             }
             else
@@ -77,6 +77,12 @@ public class RegistrationSystem {
     }
 
 
+    /**
+     *
+     * @param course
+     * @param teacher
+     * @return when a course is deleted by a teacher, all the students that were enrolled in the course, are removed from the list
+     */
     public void deleteCourseByTeacher(Course course, Teacher teacher){
         if(teacher.getCourses().contains(course))
         {
@@ -87,6 +93,6 @@ public class RegistrationSystem {
             }
         }
         else
-            System.out.println("Der Professor lehrt nicht bei diesem Kurs");
+            System.out.println("The teacher don't teach this course");
     }
 }
