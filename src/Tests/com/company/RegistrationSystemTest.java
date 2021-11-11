@@ -151,5 +151,33 @@ public class RegistrationSystemTest {
         assertNotNull(registrationSystem.getAllCourses());
     }
 
+    void testDeleteCourseByTeacher()
+    {
+        RegistrationSystem registrationSystem = new RegistrationSystem();
+        CourseRepository repoCourse = new CourseRepository();
+        List<Student> listStudent1 = new ArrayList<>();
+        List<Student> listStudent2 = new ArrayList<>();
+        List<Course> courseList1 = new ArrayList<>();
+        List<Course> courseList2 = new ArrayList<>();
+        Teacher teacher1 = new Teacher("Alexandra", "Samoila", null, 411L);
+        Teacher teacher2 = new Teacher("Maria", "Pop", null, 412L);
+        Course curs1 = new Course("Algebra", teacher1, 15, listStudent1, 422L, 6);
+        Course curs2 = new Course("Analiza", teacher2, 20, listStudent2, 423L,5);
+
+        courseList1.add(curs1);
+        courseList2.add(curs2);
+
+
+        repoCourse.create(curs1);
+        repoCourse.create(curs2);
+
+        registrationSystem.deleteCourseByTeacher(curs1, teacher1);
+        //test delete
+        assertEquals(1, repoCourse.getAll().size());
+
+
+
+    }
+
 
 }

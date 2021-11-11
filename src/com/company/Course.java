@@ -70,5 +70,19 @@ public class Course {
         return id;
     }
 
+    public void deleteStudent(Student student){
+        studentsEnrolled.remove(student);
+    }
 
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", teacher=" + teacher +
+                ", maxEnrollment=" + maxEnrollment +
+                ", studentsEnrolled=" + studentsEnrolled +
+                ", credits=" + credits +
+                ", id=" + id +
+                '}';
+    }
 }

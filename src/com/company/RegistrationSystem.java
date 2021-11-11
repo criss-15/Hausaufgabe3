@@ -28,6 +28,12 @@ public class RegistrationSystem {
                 System.out.println("Der Student besucht diesen Kurs!");
                 return false;
             }
+        else
+            if(student.totalCreditsOfaStudent() == 30 || student.totalCreditsOfaStudent() > 30)
+            {
+                System.out.println("Sie konnen sich beim Kurs nicht anmelden! Anzahl der Kredite ist schon 30.");
+                return false;
+            }
             else
                 curs.getStudentsEnrolled().add(student);
                 return true;
@@ -53,7 +59,7 @@ public class RegistrationSystem {
 
     /**
      *
-     * @param a course
+     * @param Course course
      * @return the list of students enrolled to this course
      */
     public List<Student> retrieveStudentsEnrolledForACourse(Course curs)
@@ -70,4 +76,17 @@ public class RegistrationSystem {
         return listCourses.getAll();
     }
 
+
+    public void deleteCourseByTeacher(Course course, Teacher teacher){
+        if(teacher.getCourses().contains(course))
+        {
+            for (Student student:
+                 course.getStudentsEnrolled()) {
+
+                course.deleteStudent(student);
+            }
+        }
+        else
+            System.out.println("Der Professor lehrt nicht bei diesem Kurs");
+    }
 }

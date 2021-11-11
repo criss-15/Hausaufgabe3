@@ -45,4 +45,16 @@ public class Student extends Person{
     public void addCourse(Course curs){
         enrolledCourses.add(curs);
     }
+
+
+
+    public int totalCreditsOfaStudent(){
+        int totalCredits = 0;
+        for (Course courses:
+            enrolledCourses) {
+            totalCredits += courses.getCredits();
+
+        }
+        return totalCredits;
+    }
 }
